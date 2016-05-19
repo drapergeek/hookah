@@ -14,7 +14,7 @@ defmodule Hookah.HookController do
   end
 
   def post(conn, params) do
-    params |> inspect |> Logger.debug
+    params |> inspect |> Logger.info
     webhook_params = %{
       path: stringify_path(conn.path_info),
       params: params,
