@@ -16,7 +16,7 @@ defmodule Hookah.Router do
   scope "/", Hookah do
     pipe_through :browser
 
-    get "/", PageController, :index
+    get "/", HookController, :index
   end
 
   scope "/", Hookah do

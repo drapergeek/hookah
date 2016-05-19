@@ -1,0 +1,9 @@
+<h1>Recent Hooks</h1>
+
+<%= for hook <- @webhooks do %>
+  <p>Time: <%= hook.inserted_at %></p>
+  <p>Path: <%= hook.path %></p>
+  <p>Remote IP: <%= hook.remote_ip %></p>
+  <p>Headers: <%= hook.headers %></p>
+  <p>Params: <%= inspect hook.params %></p>
+<% end %>
