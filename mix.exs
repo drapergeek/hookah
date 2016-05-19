@@ -17,9 +17,19 @@ defmodule Hookah.Mixfile do
   #
   # Type `mix help compile.app` for more information.
   def application do
-    [mod: {Hookah, []},
-     applications: [:phoenix, :phoenix_html, :cowboy, :logger, :gettext,
-                    :phoenix_ecto, :postgrex]]
+    [
+      mod: {Hookah, []},
+      applications: [
+        :cowboy,
+        :gettext,
+        :logger,
+        :phoenix,
+        :phoenix_ecto,
+        :phoenix_html,
+        :phoenix_pubsub,
+        :postgrex,
+      ]
+    ]
   end
 
   # Specifies which paths to compile per environment.
@@ -30,13 +40,16 @@ defmodule Hookah.Mixfile do
   #
   # Type `mix help deps` for examples and options.
   defp deps do
-    [{:phoenix, "~> 1.1.4"},
-     {:postgrex, ">= 0.0.0"},
-     {:phoenix_ecto, "~> 2.0"},
-     {:phoenix_html, "~> 2.4"},
-     {:phoenix_live_reload, "~> 1.0", only: :dev},
-     {:gettext, "~> 0.9"},
-     {:cowboy, "~> 1.0"}]
+    [
+      {:cowboy, "~> 1.0"},
+      {:gettext, "~> 0.9"},
+      {:phoenix, "~> 1.2.0-rc"},
+      {:phoenix_ecto, "~> 3.0-rc"},
+      {:phoenix_html, "~> 2.4"},
+      {:phoenix_live_reload, "~> 1.0", only: :dev},
+      {:phoenix_pubsub, "~> 1.0.0-rc"},
+      {:postgrex, ">= 0.0.0"},
+   ]
   end
 
   # Aliases are shortcut or tasks specific to the current project.
@@ -46,7 +59,10 @@ defmodule Hookah.Mixfile do
   #
   # See the documentation for `Mix` for more info on aliases.
   defp aliases do
-    ["ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
-     "ecto.reset": ["ecto.drop", "ecto.setup"]]
+    [
+      "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
+      "ecto.reset": ["ecto.drop", "ecto.setup"],
+      "test": ["ecto.create --quiet", "ecto.migrate", "test"],
+    ]
   end
 end

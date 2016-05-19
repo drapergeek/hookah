@@ -14,6 +14,8 @@ config :hookah, Hookah.Endpoint,
   pubsub: [name: Hookah.PubSub,
            adapter: Phoenix.PubSub.PG2]
 
+config :hookah, ecto_repos: [Hookah.Repo]
+
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",
